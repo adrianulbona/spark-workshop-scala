@@ -4,7 +4,7 @@ import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
-  * Hello world!
+  * Yelp Spark SQL
   *
   */
 object SparkSqlApp {
@@ -49,7 +49,7 @@ object SparkSqlApp {
     // TODO - 2.4 In which months was registered the most users ?
 
     // 2.5 Retrieve all the reviews for each business name
-    sqlContext.sql("select b.name, count(*) from business b join review r on b.business_id = r.business_id group by b.name").show()
+    sqlContext.sql("select b.name, r.text from business b join review r on b.business_id = r.business_id").show()
     // TODO - 2.5 Retrieve all the reviews of “Red White & Brew” business
     // TODO - 2.5 Retrieve all the checkins for each business
 

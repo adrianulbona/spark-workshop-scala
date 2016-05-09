@@ -5,7 +5,7 @@ import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
-  * Basic RDD operations
+  * Yelp Spark RDD
   */
 object SparkBasicApp {
   def main(args: Array[String]) {
@@ -96,11 +96,8 @@ object SparkBasicApp {
   }
 
   case class Business(businessId: String, city: String, reviewCount: Long, state: String, name: String)
-
   case class CheckIn(chType: String, businessId: String)
-
   case class Review(reviewId: String, date: String, businessId: String, stars: Long)
-
   case class User(yelpingSince: String, reviewCount: Long, name: String, userId: String, fans: Long)
 }
 
