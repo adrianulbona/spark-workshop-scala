@@ -21,7 +21,7 @@ object SparkMLApp {
     behaviourClusterUsers(sqlContext)
 
     // TODO - 1 as the city name is not consistent and instead of 10 city names, it will be nice to group businesses based on their location
-    geoClusterBusinesses(sqlContext)
+    //geoClusterBusinesses(sqlContext)
 
     sqlContext.sparkContext.stop()
   }
