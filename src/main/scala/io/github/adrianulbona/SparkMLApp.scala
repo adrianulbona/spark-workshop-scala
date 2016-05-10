@@ -17,17 +17,19 @@ object SparkMLApp {
 
     injectData(sqlContext)
 
-    // 1. Cluster users based on the number of reviews. Play with the number of clusters.
+    // 1. Cluster users based on the involvement within Yelp - the number of reviews is such a feature.
+    // Play with the number of clusters. 3 clusters: beginners/regular/experts
     behaviourClusterUsers(sqlContext)
 
-    // TODO - 1 as the city name is not consistent and instead of 10 city names, it will be nice to group businesses based on their location
-    //geoClusterBusinesses(sqlContext)
+    // TODO - 1. As the city name is not consistent and instead of 10 city names we have many more, it will
+    // be nice to group businesses based on their location
+    // geoClusterBusinesses(sqlContext)
 
     sqlContext.sparkContext.stop()
   }
 
   def initSpark: SQLContext = {
-    val conf = new SparkConf().setAppName("Hello Spark")
+    val conf = new SparkConf().setAppName("SparkML")
     conf.setMaster("local[*]")
 
     val sc: SparkContext = new SparkContext(conf)
@@ -58,7 +60,7 @@ object SparkMLApp {
     val userClusteringModel = kMeans.fit(dataset)
     userClusteringModel.clusterCenters.map(center => center(0)).foreach(println)
 
-    // How the number of cluster is affecting the clustering quality?
+    // TODO - How the number of cluster is affecting the clustering quality?
     println(userClusteringModel.computeCost(dataset))
 
     userClusteringModel.transform(dataset)
