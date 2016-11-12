@@ -10,7 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   * Yelp Spark ML
   *
   */
-object SparkMLApp {
+object SparkMLKMeansApp {
 
   def main(args: Array[String]) {
     val sqlContext: SQLContext = initSpark
